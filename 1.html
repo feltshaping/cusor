@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>滚动高度验证</title>
+  <style>
+    /* 故意给 body 加个边框，方便观察它的实际范围 */
+    body {
+      border: 3px dashed red;
+      margin: 0;
+      padding: 10px;
+    }
+    /* 制造足够的内容让页面产生滚动条 */
+    .box {
+      height: 1500px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">👇 往下滚动查看控制台输出 👇</div>
+  <div class="box">📊 观察 body 与 html 的高度差异</div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const html = document.documentElement;
+      const body = document.body;
+
+      console.group('🔍 滚动高度对比');
+      console.log('【HTML 节点】');
+      console.log('  - scrollHeight (总高度):', html.scrollHeight);
+      console.log('  - clientHeight (视口高度):', html.clientHeight);
+      
+      console.log('【BODY 节点】');
+      console.log('  - scrollHeight (总高度):', body.scrollHeight);
+      console.log('  - clientHeight (视口高度):', body.clientHeight);
+      console.groupEnd();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas 图片压缩实战</title>
+  </head>
+  <body>
+    <input type="file" id="fileInput" accept="image/*" />
+    <img id="img" title="img"></img>
+    <div id="preview" title="preview"></div>
+    <canvas id="canvas" title="canvas"/>
+    <p id="sizeInfo" style="font-weight: bold; margin-top: 10px"></p>
+
+    <script>
+            const fileInput = document.getElementById("fileInput");
+            const preview = document.getElementById("preview");
+            const sizeInfo = document.getElementById("sizeInfo");
+            const img=document.getElementById('img')
+            fileInput.addEventListener("change", function (event) {
+              const file = event.target.files[0];
+              if (!file) return;
+              const originalSize = file.size;
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                const arrayBuffer = e.target.result;
+                const imageUrl=arrayBuffer
+                img.onload = function () {
+                  // const canvas = document.getElementById("canvas");
+          const canvas = document.createElement('canvas');
+
+                  const ctx = canvas.getContext("2d");
+                  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                  canvas.toBlob((compressedBlob) => {
+
+                    const compressedUrl = URL.createObjectURL(compressedBlob);
+                    console.log('compressurl:',compressedUrl);
+                    const newImg = document.createElement('img');
+                    newImg.src = compressedUrl;
+                    newImg.style.maxWidth = '400px';
+                    newImg.style.border = '2px solid green';
+                    preview.innerHTML = '';
+                    preview.appendChild(newImg);
+                  }, 'image/jpeg', 0.6); // 👈 指定输出格式为 JPEG，质量为 0.6
+                  // }          
+                };
+                img.src = imageUrl;
+              }
+              reader.readAsDataURL(file);
+          });
+    </script>
+  </body>
+</html>

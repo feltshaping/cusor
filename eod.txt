@@ -1,0 +1,153 @@
+Life isn't a constant party;life is a battle
+A relentless struggle against mediocrity and excuses
+Want to know the secret ingredient that separates winners from lossers?
+It's discipline.
+Discipline isn't pretty or elegant
+It isn't a luxurious spa where you relax and feel good about yourselt
+Discipline is a trench where you face your inner demons,where you decide if you control you destiny or let life dominate you
+How many times have you look into the mirror and told yourselt you could do more?
+How many times have you let the chance to change your life slip by because you felt comfortable in your safety zone?
+It't time to break those mental shackles and unlease your inner beast
+Discipline isn't for the faint of heart
+It't for those who are willing to get up when everyoone else is asleep,for those who don't seek excuses but solutions
+Life waits for no one and those who succeed arn't the most talented but thos most diciplined
+I don't care how you feel today,are you tired,discouraged,are your muscles aching and your mind telling you to give up?
+welcome to the club
+The difference between winners and losers is that winners act despite how they feel
+Discipline is like a muscle and like any muscle it needs to be exercised and challenged to grow
+It's not about doing what you like,but doing what you need
+We're not here to seek momentary pleasure but to achieve eternal glory
+Want to change you lifes
+Then stop looking for shortcuts and start embracing discomfort
+It's not about being perfect;it's about being relentless
+
+or train us for the ascent?No dear friends
+It's our own strength and discipline that propel us forward
+It's time to take control of our lives and lead own way
+We often seek quick fixes, but the reality is that true success requires constant effort and perseverance
+Forget shortcuts and embrace the truth
+The easy path is longer and more painful than the hard path.
+Don't blame others,don't complain about the world's unfairness
+Each of us is the architect of our destiny
+Let's choose the path of responsibility,hard work,and sacrifice
+
+
+ 
+
+
+
+
+
+>+~子元素，后一兄弟，后面兄弟
+:root:{--my-color:fff,--my-width:100}
+button:{bgc:var(--my-color),width:var(100% - calc( --my-width *10 ))
+事件listener用传统其余全部箭头
+
+继承class Dog{Animal.call(this,name)}
+混入Dog.prototype.sing=function(){sing.call(this)}
+
+视口有限document.documentElement.clientHeight
+文档无限document.documentElement.scrollHeight
+
+触底scrollTop + clientHeight + threshold >= scrollHeight
+
+arr.map((i)=>console.log(i,arr)),不要迷恋this，出现this通常意味着修改，尽量明文修改，易读。arr.map(().bind(arr))
+所有"回调"this都不如预期！
+class中函数指向倒是摆脱了这一问题，this指向实例
+
+class appFactory{
+    constructor(app){this.app=app}
+    get instance(){return this.app}
+    static init(){
+        const app=createApp()
+        return new appFactory(app)
+    }
+    async initDb(){}
+}
+;async(){
+    const appF=appFactory.init()
+    const app=appF.instance
+    await app.initDb()
+}
+
+发布订阅通过建立中介，所有动作都由它协调，有效解耦
+eventBus.on('jay',(album)=>{console.log('哇新歌好听')})
+eventBus.on('jay','青花瓷')
+pubsub.subscribe/pubsub.publish
+观察者模式里被观察者过于忙碌subject.addObserve(fan)/subject.notify('青花瓷')
+
+闭包是能够返回新函数的函数，新函数仍能使用创建时的作用域。
+
+vue
+•父组件<div slot='header'>
+       <div #header>
+       <template v-slot='header'>
+    template非必需，slot='a'改为v-slot:'a'或简写#a;
+    作用域插槽，slot-scope='scope'改为#default='scope'，注意scope是泛指
+    <template #default=’scope’>{{scope.text}}
+•子组件<slot name='header'>
+        <slot :text='msg'>
+
+
+
+浏览器
+•nodelist不能直接使用遍历方法，Array.prototype.fileter.call(divs,f)；也可【...divs】展开；
+•el=null对绑定了事件的元素收尾处理
+•
+•视口docment.body.clientWidth(不含滚动条）、window.innerWidth用它！el.offsetWidth
+•文档document.body.scrollHeight
+•滚动距离document.body.scrollTop、window.pageYOffset，window.scrollY用它！
+•元素位置offestTop
+
+鼠标
+•鼠标跟随tooltip：e.clientX+postion:fixed相父元素，clientX相对视口
+•文档某一位置：e.pageX+position:absoult相body
+•父元素某一位置：e.offsetX
+
+滚动检测
+•到底没
+const scrollTop = window.scrollY || document.documentElement.scrollTop;
+const clientHeight = document.documentElement.clientHeight; // 视口高度
+const scrollHeight = document.documentElement.scrollHeight; // 文档总高度
+// 容差设为 10px，防止小数点误差
+if (scrollTop + clientHeight >= scrollHeight - 10) {}
+•进度条
+window.scrollY(当前滚动) / (document.documentElement.scrollHeight-window.innerHeight)
+•懒加载图片是否居于屏幕内
+isVisable=(react.top>=0&&rect.bottom<=window.innerHeight&&...)
+
+元素布局
+•滚动到某个 Banner 下方时，导航栏固定在顶部
+getBoundingClientRect().top<0 then
+•modal居中，更推荐css方案，此处js参考
+（window.innerWidth-el.offsetWidth)/2
+
+canvas高清屏
+dom.width=rect.width*dpr(标签width意义不大）
+ctx.scale(dpr,dpr)
+
+工具
+•opt+a截图或取色
+•nc -zv 123.45.160.240 3306//验证该端口是否被占用
+•vim
+gg首；G尾
+5gg第五行
+dd删整行
+:%d清空 
+u撤销
+•lsof -i tcp:80 ; sudo kill -9 node
+
+css
++.a最近匹配类a兄弟
+
+git
+store --staged 取消暂存
+store取消修改
+
+正则
+[^a]此^是否
+(?:A)分组但不捕获，意思是需要满足但不用他的引用
+ a(?=)同上，用于配合前面的a 
+
+nginx配置
+ 通过server_name的changjie.xyx/a/b进来，根据location策略进入proxy_path，安排5173端口或者具备负载均衡的server(upstream别名，里面指定：8080，8081端口)
